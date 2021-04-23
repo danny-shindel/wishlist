@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView
 from .models import Item
 
@@ -17,5 +17,6 @@ class Add(CreateView):
         return super().form_valid(form)
 
 def delete(request, wish_id):
+    print(wish_id)
     Item.objects.get(id=wish_id).delete()
     return redirect('index')
